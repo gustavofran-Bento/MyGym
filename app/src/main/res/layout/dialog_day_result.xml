@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Janela de resultado do "Finalizar o dia": emoji, mensagem e a lista das metas. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingHorizontal="24dp"
+    android:paddingTop="24dp">
+
+    <TextView
+        android:id="@+id/textEmoji"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:importantForAccessibility="no"
+        android:textSize="48sp"
+        tools:text="🏆" />
+
+    <TextView
+        android:id="@+id/textTitle"
+        style="@style/MyGym.Text.Title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_s"
+        android:accessibilityHeading="true"
+        android:gravity="center"
+        tools:text="Parabéns! Você bateu todas as suas metas!" />
+
+    <TextView
+        android:id="@+id/textMessage"
+        style="@style/MyGym.Text.Secondary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_xs"
+        android:gravity="center"
+        tools:text="Dia perfeito. Continue assim!" />
+
+    <!-- As 4 metas (item_goal_check.xml) são infladas aqui -->
+    <LinearLayout
+        android:id="@+id/checksContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_l"
+        android:orientation="vertical" />
+</LinearLayout>

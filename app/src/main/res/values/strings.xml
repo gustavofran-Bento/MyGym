@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MyGym</string>
+    <string name="app_slogan">Train • Eat • Evolve</string>
+    <string name="logo_description">Logo do MyGym</string>
+    <string name="navigate_back">Voltar</string>
+
+    <!-- Login -->
+    <string name="login_title">Bem-vindo de volta</string>
+    <string name="login_subtitle">Entre para acompanhar seus treinos, refeições e evolução.</string>
+    <string name="field_email">E-mail</string>
+    <string name="field_password">Senha</string>
+    <string name="login_button">Entrar</string>
+    <string name="login_create_account">Criar conta</string>
+    <string name="login_use_demo">Preencher com a conta demo</string>
+    <string name="login_error">E-mail ou senha incorretos</string>
+
+    <!-- Cadastro -->
+    <string name="register_title">Criar conta</string>
+    <string name="register_subtitle">Com seus dados, o MyGym calcula suas metas diárias automaticamente.</string>
+    <string name="register_section_body">Seu corpo</string>
+    <string name="register_section_goal">Seu objetivo</string>
+    <string name="field_name">Nome completo</string>
+    <string name="field_password_confirm">Confirmar senha</string>
+    <string name="field_age">Idade</string>
+    <string name="field_weight">Peso</string>
+    <string name="field_height">Altura</string>
+    <string name="sex_male">Masculino</string>
+    <string name="sex_female">Feminino</string>
+    <string name="goal_lose">Perder peso</string>
+    <string name="goal_maintain">Manter</string>
+    <string name="goal_gain">Ganhar massa</string>
+    <string name="register_preview_title">Sua meta diária</string>
+    <string name="register_preview_empty">Preencha idade, peso e altura para ver sua meta.</string>
+    <string name="register_button">Criar minha conta</string>
+    <string name="register_email_taken">Este e-mail já está cadastrado</string>
+
+
+    <!-- Diário: água e macros -->
+    <string name="home_water_title">Água</string>
+    <string name="home_water_add">Adicionar um copo de água</string>
+    <string name="home_water_remove">Remover um copo de água</string>
+    <string name="macro_protein">Proteína</string>
+    <string name="macro_carbs">Carboidratos</string>
+    <string name="macro_fat">Gorduras</string>
+
+    <!-- Diário -->
+    <string name="diary_previous_week">Semana anterior</string>
+    <string name="diary_next_week">Próxima semana</string>
+    <string name="diary_week_summary">Resumo da semana</string>
+    <string name="diary_add_food">Adicionar alimento</string>
+    <string name="diary_meal_empty">Nada registrado ainda</string>
+    <string name="undo">Desfazer</string>
+
+    <!-- Adicionar alimento -->
+    <string name="add_food_search">Buscar alimento</string>
+    <string name="add_food_new">Cadastrar alimento novo</string>
+    <string name="add_food_empty">Nenhum alimento encontrado.\nCadastre um novo com os valores do rótulo.</string>
+    <string name="add_food_quantity">Quantidade (g)</string>
+    <string name="add_food_custom_tag">Meu</string>
+
+    <!-- Novo alimento -->
+    <string name="new_food_subtitle">Informe os valores por 100 g (estão no rótulo). As calorias são calculadas automaticamente.</string>
+    <string name="field_food_name">Nome do alimento</string>
+    <string name="field_protein">Proteína</string>
+    <string name="field_carbs">Carbo</string>
+    <string name="field_fat">Gordura</string>
+    <string name="field_portion">Porção padrão</string>
+    <string name="new_food_formula">Proteína × 4 + Carboidrato × 4 + Gordura × 9</string>
+
+    <!-- Treinos -->
+    <string name="workouts_title">Meus treinos</string>
+    <string name="workout_today_tag">HOJE</string>
+
+    <!-- Detalhe do treino -->
+    <string name="detail_stat_exercises">Exercícios</string>
+    <string name="detail_stat_sets">Séries</string>
+    <string name="detail_stat_volume">Volume (kg)</string>
+    <string name="detail_finish">Finalizar treino</string>
+    <string name="detail_empty_title">Treino sem exercícios</string>
+    <string name="detail_empty_subtitle">Toque em “+ Exercício” para montar este treino.</string>
+    <string name="detail_error_title">Treino não encontrado</string>
+    <string name="detail_error_subtitle">Não foi possível carregar este treino. Volte e tente novamente.</string>
+    <string name="detail_error_back">Voltar</string>
+    <string name="exercise_bodyweight">Peso corporal</string>
+
+    <!-- Sair -->
+    <string name="profile_logout">Sair da conta</string>
+    <string name="profile_logout_confirm">Deseja mesmo sair?</string>
+    <string name="profile_logout_yes">Sair</string>
+    <string name="cancel">Cancelar</string>
+
+    <!-- Textos dos layouts -->
+    <string name="closing_finish">Finalizar o dia</string>
+    <string name="closing_title">Fechamento do dia</string>
+    <string name="detail_add_exercise">Exercício</string>
+    <string name="diary_meals_title">Refeições</string>
+    <string name="diary_week_empty">Nenhuma refeição registrada nesta semana</string>
+    <string name="exercise_load_hint">Use carga 0 para exercícios com o peso do corpo.</string>
+    <string name="field_exercise_name">Exercício (ex.: Desenvolvimento)</string>
+    <string name="field_load">Carga</string>
+    <string name="field_muscle_group">Grupo muscular (opcional)</string>
+    <string name="field_reps">Reps</string>
+    <string name="field_sets">Séries</string>
+    <string name="field_workout_name">Nome do treino (ex.: Ombros)</string>
+    <string name="legend_above">Acima</string>
+    <string name="legend_below">Abaixo</string>
+    <string name="legend_on_goal">Na meta</string>
+    <string name="summary_goal">Meta</string>
+    <string name="unit_kcal">kcal</string>
+    <string name="workouts_new">Novo treino</string>
+    <string name="delete_food">Remover alimento</string>
+    <string name="default_portion">100</string>
+</resources>

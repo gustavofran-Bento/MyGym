@@ -1,0 +1,460 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    TELA 2 — Diário (tela principal).
+    Seções: cabeçalho • filtro semanal • resumo da semana • resumo do dia (Fragment)
+            • água • refeições • treinos
+-->
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.diary.DiaryActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/screen_padding">
+
+        <!-- ===== Cabeçalho ===== -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textDate"
+                    style="@style/MyGym.Text.Secondary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="Domingo, 27 de setembro" />
+
+                <TextView
+                    android:id="@+id/textGreeting"
+                    style="@style/MyGym.Text.Headline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_xs"
+                    android:accessibilityHeading="true"
+                    tools:text="Olá, Gustavo! 👋" />
+
+                <TextView
+                    android:id="@+id/textGoal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_s"
+                    android:background="@drawable/bg_pill_primary_container"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="6dp"
+                    android:textColor="@color/mg_primary"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    tools:text="🎯 Ganhar massa • 3.070 kcal/dia" />
+            </LinearLayout>
+
+            <ImageButton
+                android:id="@+id/buttonLogout"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/profile_logout"
+                android:src="@drawable/ic_logout" />
+        </LinearLayout>
+
+        <!-- ===== Filtro semanal ===== -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_l"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/buttonPreviousWeek"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/diary_previous_week"
+                android:src="@drawable/ic_chevron_left" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textWeekRange"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/mg_text_primary"
+                    android:textSize="17sp"
+                    android:textStyle="bold"
+                    tools:text="21 – 27 set" />
+
+                <TextView
+                    android:id="@+id/textWeekLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/mg_primary"
+                    android:textSize="13sp"
+                    tools:text="Esta semana" />
+            </LinearLayout>
+
+            <ImageButton
+                android:id="@+id/buttonNextWeek"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/diary_next_week"
+                android:src="@drawable/ic_chevron_right" />
+        </LinearLayout>
+
+        <!-- Os 7 dias (view_week_day.xml) são inflados aqui pelo código -->
+        <LinearLayout
+            android:id="@+id/daysContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="-3dp"
+            android:layout_marginTop="@dimen/space_s"
+            android:layout_marginEnd="-3dp"
+            android:orientation="horizontal" />
+
+        <!-- ===== Resumo semanal ===== -->
+        <com.google.android.material.card.MaterialCardView
+            style="@style/MyGym.Card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_l">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/card_padding">
+
+                <TextView
+                    style="@style/MyGym.Text.Overline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:accessibilityHeading="true"
+                    android:text="@string/diary_week_summary" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_m"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal">
+
+                    <include
+                        android:id="@+id/statAverage"
+                        layout="@layout/view_stat"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <include
+                        android:id="@+id/statOnGoal"
+                        layout="@layout/view_stat"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/space_s"
+                        android:layout_weight="1" />
+
+                    <include
+                        android:id="@+id/statWorkouts"
+                        layout="@layout/view_stat"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+                </LinearLayout>
+
+                <!-- Gráfico: barras (view_day_bar.xml) + linha da meta sobreposta -->
+                <FrameLayout
+                    android:id="@+id/layoutChart"
+                    android:layout_width="match_parent"
+                    android:layout_height="144dp"
+                    android:layout_marginTop="@dimen/space_l"
+                    android:focusable="true">
+
+                    <View
+                        android:id="@+id/goalLine"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_gravity="bottom"
+                        android:background="@color/mg_text_secondary"
+                        android:importantForAccessibility="no" />
+
+                    <!-- Estado VAZIO do gráfico (semana sem registros) -->
+                    <TextView
+                        android:id="@+id/textChartEmpty"
+                        style="@style/MyGym.Text.Secondary"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="@string/diary_week_empty"
+                        android:visibility="gone" />
+
+                    <LinearLayout
+                        android:id="@+id/barsContainer"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:importantForAccessibility="noHideDescendants"
+                        android:orientation="horizontal" />
+                </FrameLayout>
+
+                <TextView
+                    android:id="@+id/textChartLegend"
+                    style="@style/MyGym.Text.Secondary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_s"
+                    android:textSize="12sp"
+                    tools:text="Linha: sua meta de 3.070 kcal por dia" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_xs"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/MyGym.Legend"
+                        android:text="@string/legend_on_goal"
+                        app:drawableTint="@color/mg_primary" />
+
+                    <TextView
+                        style="@style/MyGym.Legend"
+                        android:text="@string/legend_below"
+                        app:drawableTint="@color/mg_carbs" />
+
+                    <TextView
+                        style="@style/MyGym.Legend"
+                        android:text="@string/legend_above"
+                        app:drawableTint="@color/mg_error" />
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- ===== Dia selecionado ===== -->
+        <TextView
+            android:id="@+id/textSelectedDay"
+            style="@style/MyGym.Text.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_xl"
+            android:accessibilityHeading="true"
+            tools:text="Hoje" />
+
+        <!-- O DaySummaryFragment (calorias + macros do dia) é colocado aqui -->
+        <FrameLayout
+            android:id="@+id/daySummaryContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_s" />
+
+        <!-- ===== Água ===== -->
+        <com.google.android.material.card.MaterialCardView
+            style="@style/MyGym.Card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_m">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/card_padding">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/ic_water" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/space_m"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/home_water_title"
+                            android:textColor="@color/mg_text_primary"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/textWater"
+                            style="@style/MyGym.Text.Secondary"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            tools:text="3 de 8 copos • 750 ml" />
+                    </LinearLayout>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/buttonWaterRemove"
+                        style="@style/Widget.Material3.Button.OutlinedButton.Icon"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:contentDescription="@string/home_water_remove"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:padding="0dp"
+                        app:cornerRadius="14dp"
+                        app:icon="@drawable/ic_remove"
+                        app:iconGravity="textStart"
+                        app:iconPadding="0dp"
+                        app:iconTint="@color/mg_text_primary"
+                        app:strokeColor="@color/mg_outline" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/buttonWaterAdd"
+                        style="@style/Widget.Material3.Button.Icon"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_marginStart="@dimen/space_s"
+                        android:backgroundTint="#4FC3F7"
+                        android:contentDescription="@string/home_water_add"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:padding="0dp"
+                        app:cornerRadius="14dp"
+                        app:icon="@drawable/ic_add_dark"
+                        app:iconGravity="textStart"
+                        app:iconPadding="0dp"
+                        app:iconTint="@color/mg_background" />
+                </LinearLayout>
+
+                <com.google.android.material.progressindicator.LinearProgressIndicator
+                    android:id="@+id/progressWater"
+                    style="@style/MyGym.Progress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_m"
+                    android:max="100"
+                    app:indicatorColor="#4FC3F7" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- ===== Refeições (view_meal_section.xml inflado 4 vezes) ===== -->
+        <TextView
+            style="@style/MyGym.Text.Overline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_xl"
+            android:accessibilityHeading="true"
+            android:text="@string/diary_meals_title" />
+
+        <LinearLayout
+            android:id="@+id/mealsContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+
+        <!-- ===== Fechamento do dia ===== -->
+        <com.google.android.material.card.MaterialCardView
+            style="@style/MyGym.Card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_l">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_hero_gradient"
+                android:orientation="vertical"
+                android:padding="@dimen/card_padding">
+
+                <TextView
+                    style="@style/MyGym.Text.Overline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:accessibilityHeading="true"
+                    android:text="@string/closing_title" />
+
+                <TextView
+                    android:id="@+id/textClosingStatus"
+                    style="@style/MyGym.Text.Body"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_xs"
+                    tools:text="Quando terminar o dia, finalize para salvar o resumo." />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/buttonFinishDay"
+                    style="@style/MyGym.Button.Primary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_m"
+                    android:text="@string/closing_finish"
+                    app:icon="@drawable/ic_flag"
+                    app:iconGravity="textStart" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- ===== Treinos ===== -->
+        <TextView
+            style="@style/MyGym.Text.Overline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_xl"
+            android:accessibilityHeading="true"
+            android:text="@string/workouts_title" />
+
+        <TextView
+            android:id="@+id/textTodayWorkout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_xs"
+            android:drawablePadding="6dp"
+            android:gravity="center_vertical"
+            android:textColor="@color/mg_text_secondary"
+            android:textSize="14sp"
+            app:drawableStartCompat="@drawable/ic_fire"
+            tools:text="Hoje: Treino A — Peito + Tríceps" />
+
+        <!-- RecyclerView dentro da rolagem da tela: a própria tela rola, não a lista -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerWorkouts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="-20dp"
+            android:layout_marginEnd="-20dp"
+            android:layout_marginTop="@dimen/space_s"
+            android:nestedScrollingEnabled="false"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:itemCount="3"
+            tools:listitem="@layout/item_workout" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonNewWorkout"
+            style="@style/MyGym.Button.Outlined"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_s"
+            android:text="@string/workouts_new"
+            app:icon="@drawable/ic_add"
+            app:iconGravity="textStart" />
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

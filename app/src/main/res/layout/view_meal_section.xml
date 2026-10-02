@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Componente reutilizável: card de uma refeição no diário (inflado 4 vezes). -->
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/MyGym.Card"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/space_m">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/card_padding">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/card_padding">
+
+            <TextView
+                android:id="@+id/textEmoji"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/bg_rounded_surface_high"
+                android:gravity="center"
+                android:importantForAccessibility="no"
+                android:textSize="18sp"
+                tools:text="🍛" />
+
+            <TextView
+                android:id="@+id/textMealName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_m"
+                android:layout_weight="1"
+                android:accessibilityHeading="true"
+                android:textColor="@color/mg_text_primary"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                tools:text="Almoço" />
+
+            <TextView
+                android:id="@+id/textMealCalories"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/mg_primary"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                tools:text="648 kcal" />
+        </LinearLayout>
+
+        <!-- Alimentos da refeição (item_diary_entry.xml) -->
+        <LinearLayout
+            android:id="@+id/entriesContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_s"
+            android:orientation="vertical" />
+
+        <TextView
+            android:id="@+id/textEmpty"
+            style="@style/MyGym.Text.Secondary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/card_padding"
+            android:layout_marginTop="@dimen/space_xs"
+            android:text="@string/diary_meal_empty"
+            android:visibility="gone" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonAdd"
+            style="@style/MyGym.Button.Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_s"
+            android:text="@string/diary_add_food"
+            app:icon="@drawable/ic_add"
+            app:iconTint="@color/mg_primary" />
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Avisos do Android Lint que foram analisados e mantidos DE PROPÓSITO.
+    Cada um tem o motivo da decisão.
+-->
+<lint>
+    <!-- O app é só em português. Textos montados no Kotlin (ex.: "$calorias kcal") ficam
+         mais simples de ler e explicar do que getString(R.string.x, a, b). Os textos fixos
+         das telas estão no strings.xml. -->
+    <issue id="SetTextI18n" severity="ignore" />
+
+    <!-- accessibilityHeading (títulos para leitor de tela) só tem efeito no Android 9+.
+         Em versões mais antigas o atributo é simplesmente ignorado, sem erro. -->
+    <issue id="UnusedAttribute" severity="ignore" />
+
+    <!-- As listas são pequenas (alimentos e treinos): redesenhar a lista inteira é simples
+         e o custo é desprezível. -->
+    <issue id="NotifyDataSetChanged" severity="ignore" />
+
+    <!-- Versões mais antigas de propósito (SDK 34, AGP 8.2 e bibliotecas de 2024):
+         assim o projeto abre tanto em versões antigas quanto novas do Android Studio. -->
+    <issue id="OldTargetApi" severity="ignore" />
+    <issue id="GradleDependency" severity="ignore" />
+    <issue id="AndroidGradlePluginVersion" severity="ignore" />
+</lint>

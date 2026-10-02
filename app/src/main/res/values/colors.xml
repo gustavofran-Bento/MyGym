@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Paleta do MyGym: tema escuro com verde-limão como cor de destaque.
+     Todos os pares texto/fundo têm contraste acima de 4.5:1 (WCAG AA). -->
+<resources>
+    <color name="mg_background">#0E1116</color>
+    <color name="mg_surface">#171B22</color>
+    <color name="mg_surface_high">#212733</color>
+    <color name="mg_outline">#2C3444</color>
+
+    <color name="mg_primary">#B8F03C</color>
+    <color name="mg_on_primary">#10140A</color>
+    <color name="mg_primary_container">#24301A</color>
+
+    <color name="mg_text_primary">#F2F4F7</color>
+    <color name="mg_text_secondary">#A9B2C0</color>
+    <color name="mg_text_disabled">#6B7482</color>
+
+    <!-- Cores dos macronutrientes -->
+    <color name="mg_calories">#FF8A3D</color>
+    <color name="mg_protein">#FF6B81</color>
+    <color name="mg_carbs">#FFC940</color>
+    <color name="mg_fat">#3DD6C6</color>
+
+    <color name="mg_error">#FF6B6B</color>
+</resources>

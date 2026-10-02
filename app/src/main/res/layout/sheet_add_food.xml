@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Painel "Adicionar alimento" (sobe de baixo da tela, dentro do Diário). -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/space_s"
+    android:paddingBottom="@dimen/space_l">
+
+    <TextView
+        android:id="@+id/textTitle"
+        style="@style/MyGym.Text.Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/screen_padding"
+        android:accessibilityHeading="true"
+        tools:text="🍛 Adicionar ao Almoço" />
+
+    <TextView
+        android:id="@+id/textDate"
+        style="@style/MyGym.Text.Secondary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/screen_padding"
+        tools:text="Hoje" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layoutSearch"
+        style="@style/MyGym.Input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/screen_padding"
+        android:layout_marginTop="@dimen/space_m"
+        android:hint="@string/add_food_search"
+        app:boxBackgroundColor="@color/mg_background"
+        app:endIconMode="clear_text"
+        app:startIconDrawable="@drawable/ic_search">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/inputSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:maxLength="40" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonNewFood"
+        style="@style/MyGym.Button.Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/space_s"
+        android:text="@string/add_food_new"
+        app:icon="@drawable/ic_add"
+        app:iconTint="@color/mg_primary" />
+
+    <!-- Lista de alimentos OU mensagem de lista vazia -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="240dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerFoods"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_food" />
+
+        <TextView
+            android:id="@+id/textEmpty"
+            style="@style/MyGym.Text.Secondary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:paddingHorizontal="@dimen/space_xxl"
+            android:text="@string/add_food_empty"
+            android:visibility="gone" />
+    </FrameLayout>
+
+    <!-- Alimento escolhido + quantidade + cálculo automático -->
+    <LinearLayout
+        android:id="@+id/panelSelected"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/mg_surface_high"
+        android:orientation="vertical"
+        android:padding="@dimen/screen_padding"
+        android:visibility="gone"
+        tools:visibility="visible">
+
+        <TextView
+            android:id="@+id/textSelectedName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/mg_text_primary"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            tools:text="Arroz branco cozido" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_s"
+            android:baselineAligned="false"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layoutGrams"
+                style="@style/MyGym.Input"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/add_food_quantity"
+                app:boxBackgroundColor="@color/mg_background">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/inputGrams"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:digits="0123456789.,"
+                    android:inputType="numberDecimal"
+                    android:maxLength="6" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutPortion"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_m"
+                android:layout_weight="1"
+                android:focusable="true"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textPortionCalories"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/mg_calories"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    tools:text="192 kcal" />
+
+                <TextView
+                    android:id="@+id/textPortionMacros"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/mg_text_primary"
+                    android:textSize="13sp"
+                    tools:text="P 3,8 g • C 42,2 g • G 0,3 g" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonAdd"
+            style="@style/MyGym.Button.Primary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_m"
+            tools:text="Adicionar ao Almoço" />
+    </LinearLayout>
+</LinearLayout>

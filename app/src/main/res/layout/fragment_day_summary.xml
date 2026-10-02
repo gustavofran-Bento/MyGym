@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- DaySummaryFragment: calorias do dia (anel) + barras de proteína, carboidratos e gorduras. -->
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/MyGym.Card"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <!-- Anel de progresso com o valor no centro (FrameLayout sobrepõe) -->
+            <FrameLayout
+                android:id="@+id/layoutCaloriesRing"
+                android:layout_width="128dp"
+                android:layout_height="128dp"
+                android:focusable="true">
+
+                <com.google.android.material.progressindicator.CircularProgressIndicator
+                    android:id="@+id/progressCalories"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:importantForAccessibility="no"
+                    android:max="100"
+                    app:indicatorColor="@color/mg_calories"
+                    app:indicatorSize="128dp"
+                    app:trackColor="@color/mg_surface_high"
+                    app:trackCornerRadius="6dp"
+                    app:trackThickness="12dp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:importantForAccessibility="noHideDescendants"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textCaloriesConsumed"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/mg_text_primary"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        tools:text="1.420" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/unit_kcal"
+                        android:textColor="@color/mg_text_secondary"
+                        android:textSize="13sp" />
+                </LinearLayout>
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/MyGym.Text.Secondary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/summary_goal" />
+
+                <TextView
+                    android:id="@+id/textCaloriesGoal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/mg_text_primary"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    tools:text="3.070 kcal" />
+
+                <TextView
+                    android:id="@+id/textRemainingLabel"
+                    style="@style/MyGym.Text.Secondary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_m"
+                    tools:text="Restante" />
+
+                <TextView
+                    android:id="@+id/textRemaining"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/mg_primary"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    tools:text="1.650 kcal" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginVertical="@dimen/space_l"
+            android:background="@color/mg_outline" />
+
+        <!-- Componente reutilizável view_macro_bar.xml incluído 3 vezes -->
+        <include
+            android:id="@+id/macroProtein"
+            layout="@layout/view_macro_bar" />
+
+        <include
+            android:id="@+id/macroCarbs"
+            layout="@layout/view_macro_bar" />
+
+        <include
+            android:id="@+id/macroFat"
+            layout="@layout/view_macro_bar" />
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

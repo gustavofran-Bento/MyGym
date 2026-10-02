@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Componente reutilizável: um dia na faixa da semana (inflado 7 vezes). -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/dayRoot"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="3dp"
+    android:layout_weight="1"
+    android:background="@drawable/bg_day_unselected"
+    android:clickable="true"
+    android:focusable="true"
+    android:gravity="center_horizontal"
+    android:minHeight="64dp"
+    android:orientation="vertical"
+    android:paddingVertical="8dp">
+
+    <TextView
+        android:id="@+id/textDayName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/mg_text_secondary"
+        android:textSize="12sp"
+        tools:text="Seg" />
+
+    <TextView
+        android:id="@+id/textDayNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/mg_text_primary"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        tools:text="22" />
+
+    <View
+        android:id="@+id/dot"
+        android:layout_width="6dp"
+        android:layout_height="6dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/bg_dot" />
+</LinearLayout>

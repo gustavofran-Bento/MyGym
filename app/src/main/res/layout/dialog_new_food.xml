@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Janela "Novo alimento": macros por 100 g → calorias calculadas automaticamente. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingHorizontal="24dp"
+    android:paddingTop="@dimen/space_s">
+
+    <TextView
+        style="@style/MyGym.Text.Secondary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/new_food_subtitle" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layoutName"
+        style="@style/MyGym.Input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_m"
+        android:hint="@string/field_food_name"
+        app:boxBackgroundColor="@color/mg_surface_high">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/inputName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textCapSentences"
+            android:maxLength="40" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_s"
+        android:baselineAligned="false"
+        android:orientation="horizontal">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutProtein"
+            style="@style/MyGym.Input"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/field_protein"
+            app:boxBackgroundColor="@color/mg_surface_high"
+            app:suffixText="g">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/inputProtein"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:digits="0123456789.,"
+                android:inputType="numberDecimal"
+                android:maxLength="5" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutCarbs"
+            style="@style/MyGym.Input"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/space_s"
+            android:layout_weight="1"
+            android:hint="@string/field_carbs"
+            app:boxBackgroundColor="@color/mg_surface_high"
+            app:suffixText="g">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/inputCarbs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:digits="0123456789.,"
+                android:inputType="numberDecimal"
+                android:maxLength="5" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutFat"
+            style="@style/MyGym.Input"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/field_fat"
+            app:boxBackgroundColor="@color/mg_surface_high"
+            app:suffixText="g">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/inputFat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:digits="0123456789.,"
+                android:inputType="numberDecimal"
+                android:maxLength="5" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layoutPortion"
+        style="@style/MyGym.Input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_s"
+        android:hint="@string/field_portion"
+        app:boxBackgroundColor="@color/mg_surface_high"
+        app:suffixText="g">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/inputPortion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:digits="0123456789.,"
+            android:inputType="numberDecimal"
+            android:maxLength="6"
+            android:text="@string/default_portion" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Resultado do cálculo automático -->
+    <TextView
+        android:id="@+id/textCalories"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_m"
+        android:textColor="@color/mg_calories"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        tools:text="165 kcal em 100 g" />
+
+    <TextView
+        android:id="@+id/textFormula"
+        style="@style/MyGym.Text.Secondary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/new_food_formula"
+        tools:text="32 × 4 + 0 × 4 + 3,6 × 9" />
+</LinearLayout>

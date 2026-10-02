@@ -1,0 +1,22 @@
+# Gradle / build
+.gradle/
+build/
+/app/build/
+.kotlin/
+
+# Android Studio / IntelliJ
+.idea/
+*.iml
+.DS_Store
+captures/
+.externalNativeBuild/
+.cxx/
+
+# Arquivos locais (caminho do SDK, chaves) — NUNCA versionar
+local.properties
+.env
+secrets.properties
+
+# Keystores
+*.jks
+*.keystore
